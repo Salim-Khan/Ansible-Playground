@@ -1,6 +1,6 @@
 ---
 - name: Build and run Docker container
-  hosts: test_linux
+  hosts: bestnewapp
   tasks:
     - name: Install required system packages
       apt:
