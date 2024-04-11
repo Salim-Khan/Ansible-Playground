@@ -1,18 +1,7 @@
-[township_cisco]
+[bestnewapp]
 
-10.50.0.11
+147.182.204.179
 
-[township_cisco:vars]
-ansible_user=bifpcl
-ansible_password=Bifpcl123
-ansible_connection=network_cli
-ansible_network_os=ios
-ansible_port=22
-
-
-[test_linux]
-10.8.215.61
-
-[test_linux:vars]
-ansible_username=root
-ansible_password=Admin@BIFPCL
+[bestnewapp:vars]
+ansible_user="user"
+ansible_password="password"
