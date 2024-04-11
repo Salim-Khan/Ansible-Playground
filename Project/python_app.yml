@@ -1,0 +1,37 @@
+---
+- name: Build and run Docker container
+  hosts: test_linux
+  tasks:
+    - name: Install required system packages
+      apt:
+        pkg:
+          - docker.io
+          - python3-docker
+        state: latest
+        update_cache: true
+    - name: Creates directory
+      ansible.builtin.file:
+        path: /root/project
+        state: directory
+    - name: Transfer Dockerfile
+      copy:
+        src: /home/project/
+        dest: /root/project/
+
+    - name: Build Docker image
+      docker_image:
+        source: build
+        build:
+          path: /root/project
+        name: python_app
+      tags: latest
+
+    - name: Run Docker container
+      docker_container:
+        name: python-app
+        image: python_app
+        state: started
+        ports:
+          - "80:80"
+        # Add any other options you need
+
